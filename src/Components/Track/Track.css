@@ -35,3 +35,15 @@
     font-weight: 300;
     color: rgba(256, 256, 256, 0.8);
   }
+
+  .No-Preview {
+    font-size: .83rem;
+    font-weight: 300;
+    color: rgba(256, 256, 256, 0.8);
+  }
+
+  .Audio {
+    width: 250px;
+    transform: scale(.7);
+    padding: 0;
+  }

@@ -24,6 +24,14 @@ class Track extends React.Component {
         this.props.onRemove(this.props.track);
     }
 
+    playPreview() {
+        if (this.props.track.preview === null) {
+            return <p className="No-Preview">No preview available for this track.</p>
+        } else {
+            return <div className="Audio"><audio controls src={this.props.track.preview}>test</audio></div>
+        }
+    }
+
     render() {
         return (
             <div className="Track">
@@ -31,6 +39,7 @@ class Track extends React.Component {
                     <h3>{this.props.track.name}</h3>
                     <p>{this.props.track.artist} | {this.props.track.album}</p>
                 </div>
+                {this.playPreview()}
                 {this.renderAction()}
             </div>
         );
