@@ -10,9 +10,13 @@ class Track extends React.Component {
 
     renderAction() {
         if (this.props.isRemoval) {
-            return <button className="Track-action" onClick={this.removeTrack}>-</button>
+            return <button className="Track-action" 
+                onClick={this.removeTrack}
+                title="Remove from Playlist">-</button>
         } else {
-            return <button className="Track-action" onClick={this.addTrack}>+</button>
+            return <button className="Track-action" 
+                onClick={this.addTrack}
+                title="Add to Playlist">+</button>
         }
     }
 
@@ -28,7 +32,7 @@ class Track extends React.Component {
         if (this.props.track.preview === null) {
             return <p className="No-Preview">No preview available for this track.</p>
         } else {
-            return <div className="Audio"><audio controls src={this.props.track.preview}>test</audio></div>
+            return <div className="Audio"><audio controls src={this.props.track.preview}>Your browser does not support audio playback.</audio></div>
         }
     }
 
