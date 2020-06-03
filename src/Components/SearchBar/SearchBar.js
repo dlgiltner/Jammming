@@ -9,13 +9,23 @@ class SearchBar extends React.Component {
             term: ''
         }
 
+        this.scrollToTopDiv = this.scrollToTopDiv.bind(this);
         this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
+    scrollToTopDiv() {
+        document.getElementById("searchResultsList").scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+      }
+
     search() {
         this.props.onSearch(this.state.term);
+        this.scrollToTopDiv();
     }
 
     handleKeyPress(e) {
