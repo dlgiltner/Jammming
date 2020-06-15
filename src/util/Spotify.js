@@ -1,6 +1,7 @@
 const clientID = '1ccbf1ae5dc84b8aa37f69c94c8f20e3';
 const redirectURI = 'http://localhost:3000/';
 let accessToken;
+let offsetNum = 20;
 
 const Spotify = {
     getAccessToken() {
@@ -23,8 +24,14 @@ const Spotify = {
         }
     },
 
+    resetOffset() {
+        offsetNum = 20;
+        return offsetNum;
+    },
+
     search(term) {
         const accessToken = Spotify.getAccessToken();
+        this.resetOffset();
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
@@ -44,6 +51,34 @@ const Spotify = {
                 preview: track.preview_url
             }));
         });
+    },
+
+    incrementOffset() {
+        offsetNum += 20;
+        return offsetNum;
+    },
+
+    searchAgain(term) {
+        const accessToken = Spotify.getAccessToken();
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}&offset=${offsetNum}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }).then(response => {
+            return response.json();
+        }).then(jsonResponse => {
+            if (!jsonResponse.tracks) {
+                return [];
+            }
+            return jsonResponse.tracks.items.map(track => ({
+                id: track.id,
+                name: track.name,
+                artist: track.artists[0].name,
+                album: track.album.name,
+                uri: track.uri,
+                preview: track.preview_url
+            }));
+        }).then(this.incrementOffset());
     },
 
     savePlaylist(name, trackURIs) {
