@@ -1,5 +1,5 @@
 const clientID = '1ccbf1ae5dc84b8aa37f69c94c8f20e3';
-const redirectURI = 'http://localhost:3000/';
+const redirectURI = 'http://dgjamm.surge.sh/';
 let accessToken;
 let offsetNum = 20;
 
