@@ -20,3 +20,5 @@ Jammming is the final project for front-end web development in Codecademy. The i
 **Step 6** - Rename your playlist by clicking on the title text at the top of the Playlist box. Delete the existing text, and type a name for the new playlist.
 
 **Step 7** - Click the Save to Spotify button at the bottom of the Playlist box. The new playlist will then save to Spotify, and Jammming will reset the Results and Playlist boxes to be ready for the creation of another playlist.
+
+[View the completed project](http://dgjamm.surge.sh/)
